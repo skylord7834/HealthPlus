@@ -52,6 +52,10 @@ body {
   display: inline-block;
   text-decoration: none;
 }
+.ambulance{
+  
+  /* background:linear-gradient( rgb(20, 177, 148),rgb(218, 153, 153)); */
+}
 
 .operations {
   position: fixed;
