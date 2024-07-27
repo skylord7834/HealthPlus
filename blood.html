@@ -7,6 +7,9 @@
     <title>Blood Donation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+       body{
+            background-color:rgb(200, 255, 255);
+        }
         .hidden {
             display: none;
         }
@@ -22,6 +25,7 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
+
     </style>
 </head>
 <body>
@@ -33,7 +37,6 @@
         <button id="need-blood" class="btn btn-danger">Need Blood</button>
     </div>
 
-    <!-- Donation Form -->
     <div id="donor-form" class="donor-form hidden">
         <h3>Donate Blood</h3>
         <form id="donation-form">
@@ -67,75 +70,14 @@
         </form>
     </div>
 
-    <!-- Donor List -->
     <div id="donor-list" class="donor-list hidden">
         <h3>Available Donors</h3>
         <div id="donors">
-            <!-- Donor items will be appended here -->
+            
         </div>
     </div>
 </div>
 
-<script>
-    // Load donors from localStorage when the page loads
-    const donors = JSON.parse(localStorage.getItem('donors')) || [];
-
-    // Function to display donors
-    function loadDonors() {
-        const donorsContainer = document.getElementById('donors');
-        donorsContainer.innerHTML = ''; // Clear existing donors
-        donors.forEach(donor => {
-            const donorDiv = document.createElement('div');
-            donorDiv.classList.add('donor');
-            donorDiv.innerHTML = `
-                <div>
-                    <strong>${donor.name}</strong><br>
-                    Blood Group: ${donor.bloodGroup}<br>
-                    Email: ${donor.email}
-                </div>
-                <div>
-                    <a href="tel:${donor.phone}" class="btn btn-primary">Call Now</a>
-                </div>
-            `;
-            donorsContainer.appendChild(donorDiv);
-        });
-    }
-
-    // Event listeners for buttons
-    document.getElementById('donate-blood').addEventListener('click', function() {
-        document.getElementById('donor-form').classList.remove('hidden');
-        document.getElementById('donor-list').classList.add('hidden');
-    });
-
-    document.getElementById('need-blood').addEventListener('click', function() {
-        document.getElementById('donor-form').classList.add('hidden');
-        document.getElementById('donor-list').classList.remove('hidden');
-        loadDonors(); // Load donors when viewing the list
-    });
-
-    // Form submission event
-    document.getElementById('donation-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const donor = {
-            name: document.getElementById('donor-name').value,
-            email: document.getElementById('donor-email').value,
-            phone: document.getElementById('donor-phone').value,
-            bloodGroup: document.getElementById('donor-blood-group').value
-        };
-        addDonor(donor);
-        this.reset();
-        alert('Thank you for donating blood!');
-    });
-
-    // Function to add donor and store in localStorage
-    function addDonor(donor) {
-        donors.push(donor);
-        localStorage.setItem('donors', JSON.stringify(donors)); // Store updated donors in localStorage
-    }
-
-    // Load donors on page load
-    loadDonors();
-</script>
-
+<script src="./js/blood.js"></script>
 </body>
 </html>

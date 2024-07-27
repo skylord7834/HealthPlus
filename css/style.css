@@ -109,11 +109,15 @@ nav {
 .carousel-caption>h5{
   color: rgb(40, 39, 39);
   font-size:2.5rem;
+  /* display:flex;
+  justify-content: center;
+  align-items: center; */
 }
 .cText{
   color: rgb(40, 39, 39);
   font-size:1.5rem;
-  padding-bottom:150px;
+  padding-bottom: 150px;
+  
 }
 
 /* .carousel-caption>h5{
