@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Health⁺</title>
+    <link rel="icon" type="png" href="./img/health plus favicon.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: white;
+            font-family:sans;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .developer-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .developer-card:nth-child(even) {
+            flex-direction: row-reverse;
+            background-color: rgb(220, 230, 246);
+        }
+
+        .developer-card img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .developer-details {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .developer-details h3 {
+            margin: 0 0 10px;
+        }
+
+        .developer-details p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .developer-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .developer-card:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .developer-card img {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .developer-card {
+                max-width: 70%;
+                margin: 20px auto;
+                /* Center the cards horizontally */
+            }
+        }
+        #health{
+            color:rgb(58, 58, 58);
+            font-weight: 700;
+        }
+        #plus{
+            color:green;
+            font-weight:800;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+
+        <div class="container">
+            <h1 class="text-center my-4 main-heading">About <span id="health">Health<span id="plus">⁺</span></span></h1>
+            <div class="about-section">
+                <h2>About Us</h2><hr color="black">
+                <p>
+                    <b>Health⁺ </b> is a revolutionary platform designed to unify various hospitals and provide a seamless
+                    appointment booking experience. Our mission is to make healthcare accessible and convenient for
+                    everyone. Whether you need to book an appointment at your preferred hospital, consult with a doctor
+                    online, or find specific specialists, Health⁺ has got you covered. Our emergency blood donation service
+                    ensures that you can always find and donate blood in critical times, saving lives when it matters the
+                    most.
+                </p>
+            </div>
+            <h2 class="text-center my-4">Our Team</h2>
+            <div class="developer-card">
+                <img src="./img/dev.png" alt="Developer 1">
+                <div class="developer-details">
+                    <h3>Deepak Muduli</h3>
+                    <p>Role: Lead Developer</p>
+                    <p>Designation: Full Stack Developer</p>
+                </div>
+            </div>
+            <div class="developer-card">
+            <img src="./img/dev.png" alt="Developer 2">
+            <div class="developer-details">
+                <h3>Rajat kr Barik</h3>
+                <p>Role: Backend Developer</p>
+                <p>Designation: Backend Specialist</p>
+            </div>
+        </div>
+        <div class="developer-card">
+            <img src="./img/dev.png" alt="Developer 3">
+            <div class="developer-details">
+                <h3>Saurav kr Arya</h3>
+                <p>Role: Frontend Developer</p>
+                <p>Designation: UI/UX Designer</p>
+            </div>
+        </div>
+        <div class="developer-card">
+            <img src="./img/dev.png" alt="Developer 4">
+            <div class="developer-details">
+                <h3>Satyajit Patra</h3>
+                <p>Role: Database Administrator</p>
+                <p>Designation: DBA</p>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container text-center">
+        <p>&copy; 2024 Health⁺. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> | 
+            <a href="contact.html">Contact Us</a> | 
+            <a href="d and pp.html">Privacy Policy</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+
+</html>
