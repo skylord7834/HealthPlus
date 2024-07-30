@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Health Plus</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color: rgb(203, 221, 255);
+        }
+        .hospital-list {
+            padding: 50px 20px;
+        }
+
+        .hospital-list h1 {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            margin-bottom: 30px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .doctor-item {
+            margin-bottom: 10px;
+        }
+
+        .appointment-details,
+        .payment-gateway {
+            display: none;
+        }
+    </style>
+    <script>
+        const hospitals = [
+            {
+                name: "Medicare Hospital",
+                doctors: ["Dr. Smith", "Dr. Johnson"]
+            },
+            {
+                name: "Global Health Clinic",
+                doctors: ["Dr. Williams", "Dr. Brown"]
+            },
+            {
+                name: "Sunrise Medical Center",
+                doctors: ["Dr. Garcia", "Dr. Martinez"]
+            },
+            {
+                name: "Heal Well Hospital",
+                doctors: ["Dr. Robinson", "Dr. Clark"]
+            },
+            {
+                name: "Care Hospital",
+                doctors: ["Dr. Lewis", "Dr. Hall"]
+            },
+            {
+                name: "MedLife Hospital",
+                doctors: ["Dr. Davis", "Dr. Miller"]
+            }
+        ];
+
+        function showAppointmentForm(hospitalName, doctorName) {
+            document.getElementById('appointment-hospital').value = hospitalName;
+            document.getElementById('appointment-doctor').value = doctorName;
+            document.getElementById('hospital-list').style.display = 'none';
+            document.getElementById('appointment-form').style.display = 'block';
+        }
+
+        function showPaymentGateway(event) {
+            event.preventDefault();
+
+            const hospital = document.getElementById('appointment-hospital').value;
+            const doctor = document.getElementById('appointment-doctor').value;
+            const name = document.getElementById('patient-name').value;
+            const email = document.getElementById('patient-email').value;
+            const phone = document.getElementById('patient-phone').value;
+            const date = document.getElementById('appointment-date').value;
+            const time = document.getElementById('appointment-time').value;
+
+            document.getElementById('confirm-hospital').innerText = hospital;
+            document.getElementById('confirm-doctor').innerText = doctor;
+            document.getElementById('confirm-name').innerText = name;
+            document.getElementById('confirm-email').innerText = email;
+            document.getElementById('confirm-phone').innerText = phone;
+            document.getElementById('confirm-date').innerText = date;
+            document.getElementById('confirm-time').innerText = time;
+
+            document.getElementById('appointment-form').style.display = 'none';
+            document.getElementById('appointment-details').style.display = 'block';
+        }
+
+        function confirmPayment() {
+            document.getElementById('appointment-details').style.display = 'none';
+            document.getElementById('payment-gateway').style.display = 'block';
+        }
+
+        function makePayment(event) {
+            event.preventDefault();
+            alert("Appointment successful");
+        }
+    </script>
+</head>
+<body>
+
+<div class="container hospital-list" id="hospital-list">
+    <h1 class="text-center">Book Appointment</h1>
+    <hr size="3px" width="90%" color="black">
+    <div class="row" id="hospital-container">
+        <!-- Hospital list will be generated here by JavaScript -->
+        <script>
+            const container = document.getElementById('hospital-container');
+            hospitals.forEach(hospital => {
+                const hospitalDiv = document.createElement('div');
+                hospitalDiv.className = 'col-md-4';
+
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                const hospitalTitle = document.createElement('h5');
+                hospitalTitle.className = 'card-title';
+                hospitalTitle.innerText = hospital.name;
+                cardBody.appendChild(hospitalTitle);
+
+                hospital.doctors.forEach(doctor => {
+                    const doctorDiv = document.createElement('div');
+                    doctorDiv.className = 'doctor-item';
+
+                    const doctorName = document.createElement('p');
+                    doctorName.className = 'card-text';
+                    doctorName.innerText = doctor;
+                    doctorDiv.appendChild(doctorName);
+
+                    const bookButton = document.createElement('button');
+                    bookButton.className = 'btn btn-success';
+                    bookButton.innerText = 'Book Appointment';
+                    bookButton.onclick = () => showAppointmentForm(hospital.name, doctor);
+                    doctorDiv.appendChild(bookButton);
+
+                    cardBody.appendChild(doctorDiv);
+                });
+
+                card.appendChild(cardBody);
+                hospitalDiv.appendChild(card);
+                container.appendChild(hospitalDiv);
+            });
+        </script>
+    </div>
+</div>
+
+<div class="container" id="appointment-form" style="display:none;">
+    <h1 class="text-center">Book Appointment</h1>
+    <hr size="3px" width="90%" color="black">
+    <form onsubmit="showPaymentGateway(event)">
+        <input type="hidden" id="appointment-hospital">
+        <input type="hidden" id="appointment-doctor">
+        <div class="form-group">
+            <label for="patient-name">Name:</label>
+            <input type="text" id="patient-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="patient-email">Email:</label>
+            <input type="email" id="patient-email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="patient-phone">Phone Number:</label>
+            <input type="tel" id="patient-phone" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="appointment-date">Preferred Date:</label>
+            <input type="date" id="appointment-date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="appointment-time">Preferred Time:</label>
+            <input type="time" id="appointment-time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Proceed to Payment</button>
+        </div>
+    </form>
+</div>
+
+<div class="container appointment-details" id="appointment-details">
+    <h1 class="text-center">Appointment Details</h1>
+    <hr size="3px" width="90%" color="black">
+    <p><strong>Hospital:</strong> <span id="confirm-hospital"></span></p>
+    <p><strong>Doctor:</strong> <span id="confirm-doctor"></span></p>
+    <p><strong>Name:</strong> <span id="confirm-name"></span></p>
+    <p><strong>Email:</strong> <span id="confirm-email"></span></p>
+    <p><strong>Phone:</strong> <span id="confirm-phone"></span></p>
+    <p><strong>Date:</strong> <span id="confirm-date"></span></p>
+    <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+    <div class="form-group">
+        <button class="btn btn-success" onclick="confirmPayment()">Confirm and Pay</button>
+    </div>
+</div>
+
+<div class="container payment-gateway" id="payment-gateway">
+    <h1 class="text-center">Payment Details</h1>
+    <hr size="3px" width="90%" color="black">
+    <form onsubmit="makePayment(event)">
+        <div class="form-group">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="text" id="expiryDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="cardHolderName">Cardholder Name:</label>
+            <input type="text" id="cardHolderName" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block">Make Payment</button>
+        </div>
+    </form>
+</div>
+<footer class="footer">
+    <div class="container text-center">
+        <p>&copy; 2024 Health⁺. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> | 
+            <a href="contact.html">Contact Us</a> | 
+            <a href="d and pp.html">Privacy Policy</a>
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
