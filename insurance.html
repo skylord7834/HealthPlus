@@ -6,41 +6,31 @@
     <title>Health Insurance Plans - Health Plus</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{
-            background-color:rgb(197, 218, 255);
-        }
-        .container{
-            height:100vh;
+        body {
+            background-color: rgb(197, 218, 255);
         }
         .insurance-list {
             padding: 50px 20px;
         }
-
         .insurance-list h1 {
             margin-bottom: 20px;
         }
-
         .card {
             margin-bottom: 30px;
         }
-
         .card-body {
             padding: 20px;
         }
-
         .form-container {
             margin-top: 50px;
         }
-        .btn{
-            background-color:rgb(145, 0, 174);
-            border:none;
+        .btn {
+            background-color: rgb(145, 0, 174);
+            border: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        
-    </header>
 
 <div class="container insurance-list">
     <h1 class="text-center">Health Insurance Plans</h1>
@@ -48,7 +38,7 @@
 
     <div class="row">
         <!-- Plan 1 -->
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Basic Health Plan</h5>
@@ -65,7 +55,7 @@
         </div>
 
         <!-- Plan 2 -->
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Standard Health Plan</h5>
@@ -85,7 +75,7 @@
         </div>
 
         <!-- Plan 3 -->
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Premium Health Plan</h5>
@@ -139,7 +129,7 @@
 
 <script>
     document.getElementById('inquiry-form').addEventListener('submit', function(event) {
-        // event.preventDefault();
+        event.preventDefault();
         alert('Inquiry submitted successfully. Our team will contact you soon.');
     });
 </script>
