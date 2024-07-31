@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body {
             display: flex;
@@ -44,7 +43,6 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-
         }
 
         .btn {
@@ -61,45 +59,65 @@
             background-color: #218838;
         }
 
-        .register-link {
+        .login-link {
             text-align: center;
             margin-top: 15px;
         }
 
-        .register-link a {
-            color: #007bff;
+        .login-link a {
+            color: rgb(2, 71, 188);
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form id="loginForm">
+        <h1>Register</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter username/email" required>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" required>
+                <input type="password" id="password" required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
         </form>
-        <div class="register-link">
-            <p>New user? <a href="register.html">Register now</a></p>
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login</a></p>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            
-            alert('Login successful!');
+
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+            } else {
+                alert('Registration successful!');
+                // You can add code here to submit the form data to the server
+            }
         });
     </script>
 </body>
